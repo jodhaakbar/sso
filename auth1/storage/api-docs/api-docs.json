@@ -1,0 +1,319 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SSO Api ",
+        "version": "1.0.0"
+    },
+    "basePath": "/sso-new/auth1/",
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Returns an access token and refresh token",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Parameters to pass (in body)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Refresh access token for a user",
+                "operationId": "refresh",
+                "parameters": [
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Parameters to pass (in body)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "refresh_token": {
+                                    "type": "string",
+                                    "default": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Destroys access token and refresh token",
+                "operationId": "logout",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Create a new user and returns access_token and refresh_token",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Parameters to pass (in body)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "password_confirmation": {
+                                    "type": "string",
+                                    "default": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/users/": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "List all users",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create a new user",
+                "operationId": "create",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Parameters to pass (in body)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "password_confirmation": {
+                                    "type": "string",
+                                    "default": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a user by its ID",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Updates a given user",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "params",
+                        "in": "body",
+                        "description": "Parameters to pass (in body)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a user by its ID",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Use the keyword 'Bearer' before the access-key. Example 'Bearer 0123456789_access-key-goes-here_987654321",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

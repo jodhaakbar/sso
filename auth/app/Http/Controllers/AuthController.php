@@ -9,6 +9,7 @@ use App\User;
 
 use App\Notifications\SignupActivate;
 
+
 class AuthController extends Controller
 {
     /**

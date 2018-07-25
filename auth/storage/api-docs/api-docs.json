@@ -1,0 +1,41 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Laravel Swaggervel",
+        "description": "Operations related to functionality for laravel swaggervel",
+        "termsOfService": "",
+        "contact": {
+            "name": "Company API Support",
+            "url": "http://example.com/",
+            "email": "no-reply@example.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "host": "passport-swaggervel.test",
+    "basePath": "/api/v1",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {},
+    "definitions": {},
+    "securityDefinitions": {
+        "passport-swaggervel_auth": {
+            "type": "oauth2",
+            "description": "OAuth2 grant provided by Laravel Passport",
+            "flow": "accessCode",
+            "authorizationUrl": "/oauth/authorize",
+            "tokenUrl": "/oauth/token",
+            "scopes": {}
+        }
+    }
+}
