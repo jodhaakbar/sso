@@ -53,6 +53,7 @@ class RegisterController extends BaseApiController
      */
     public function register(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email'    => 'required|email|unique:users,email',
@@ -60,11 +61,11 @@ class RegisterController extends BaseApiController
         ]);
 
         try {
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-            ]);
+            // User::create([
+            //     //'name' => $request->name,
+            //     //'email' => $request->email,
+            //     //'password' => bcrypt($request->password),
+            // ]);
 
             return $this->issueToken($request, 'password');
 
